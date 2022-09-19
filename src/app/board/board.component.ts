@@ -9,7 +9,7 @@ import { Chess } from 'chess.js';
 export class BoardComponent implements OnInit {
   // TODO: King and Queen are flipped 
   board: Array<Array<String>> = [
-    ["r_b", "n_b", "b_b", "q_b", "k_b", "b_b", "n_b", "r_w"],
+    ["r_b", "n_b", "b_b", "k_b", "q_b", "b_b", "n_b", "r_w"],
     ["p_b", "p_b", "p_b", "p_b", "p_b", "p_b", "p_b", "p_b"],
     ["", "", "", "", "", "", "", ""],
     ["", "", "", "", "", "", "", ""],
@@ -52,7 +52,7 @@ export class BoardComponent implements OnInit {
   ]
 
     this.chess.loadPgn(pgn.join('\n'));
-    this.updateBoard(this.chess2  );
+    this.updateBoard(this.chess2);
   }
 
   movePiece(): void {
@@ -60,22 +60,34 @@ export class BoardComponent implements OnInit {
       let history = this.chess.history({verbose: true});
       this.chess2.move(history[this.current_move]);
       this.updateBoard(this.chess2);
+
+      console.log(history);
+      this.moves.push(this.chess2.fen());
       this.current_move++;
     }
   }
 
   updateBoard(chess: Chess): void {
     const board = chess.board();
-
+    console.log(board);
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j] != null) {
-          let piece = board[i][j]!.type + "_" + board[i][j]!.color;
+          let type = board[i][j]?.type;
+          let piece = type + "_" + board[i][j]!.color;
           this.board[i][j] = "assets/" + piece + ".png";
+          
         } else {
           this.board[i][j] = "assets/Empty.png";
         }
       }
     }
+    console.log(board);
+  }
+
+  loadPgn(data: string): void {
+    console.log(data);
+    this.chess.loadPgn(data);
+    this.updateBoard(this.chess2);
   }
 }

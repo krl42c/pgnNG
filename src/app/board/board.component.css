@@ -1,4 +1,4 @@
-.chess-board { border-spacing: 0; border-collapse: collapse; }
+.chess-board { border-spacing: 0; border-collapse: collapse; float:left}
 .chess-board th { padding: .5em; }
 .chess-board th + th { border-bottom: 1px solid #000; }
 .chess-board th:first-child,
@@ -8,3 +8,7 @@
 .chess-board td { width: 1.5em; height: 1.5em; text-align: center; font-size: 32px; line-height: 0;}
 .chess-board .light { background: #eee; }
 .chess-board .dark { background: #aaa; }
+.step {
+    margin-top: 5%;
+    margin-left: 2%;
+}
