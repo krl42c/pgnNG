@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Move } from 'chess.js';
 import { BoardComponent } from '../board/board.component';
+import { MoveParser } from './move_parser';
 
 @Component({
   selector: 'app-tracker',
@@ -17,5 +19,11 @@ export class TrackerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  getParse(move : string, color : string): string {
+    let str =  MoveParser.getPiecePng(move, color);
+    console.log(str);
+    return str;
   }
 }

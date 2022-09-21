@@ -87,6 +87,7 @@ export class BoardComponent implements OnInit {
 
   loadPgn(data: string): void {
     console.log(data);
+    this.current_move = 0;
     this.chess.loadPgn(data);
     this.updateBoard(this.chess2);
   }
