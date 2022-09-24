@@ -1,8 +1,41 @@
 .tracker {
     margin-top: 20px;
     float:left;
-    margin-left: 1%;
-    width: 60%;
+    margin-left: 20px;
 }
 
-.table {width: 50%; margin-left: 2%;}
+.table {width: 200px; margin-left: 2%;}
+
+tbody {
+    width: 100px;
+    overflow-y: auto;    /* Trigger vertical scroll    */
+}
+td:hover {
+    background-color: cadetblue;
+}
+
+table {
+    display: flex;
+    flex-flow: column;
+    height: 400px;
+    width: 100%;
+}
+
+thead {
+    padding-right: 13px;
+    flex: 0 0 auto;
+}
+
+tbody {
+    flex: 1 1 auto;
+    display: block;
+    width: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tr {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}

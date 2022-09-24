@@ -26,4 +26,8 @@ export class TrackerComponent implements OnInit {
     console.log(str);
     return str;
   }
+
+  loadAtMove() : void {
+    
+  }
 }

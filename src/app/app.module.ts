@@ -10,7 +10,7 @@ import { TrackerComponent } from './tracker/tracker.component';
   declarations: [
     AppComponent,
     BoardComponent,
-    TrackerComponent
+    TrackerComponent,
   ],
   imports: [
     BrowserModule,

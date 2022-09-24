@@ -1,4 +1,5 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Chess } from 'chess.js';
 
 @Component({
@@ -23,8 +24,8 @@ export class BoardComponent implements OnInit {
   chess2: Chess = new Chess;
   moves: Array<String> = [];
 
-  constructor() {
 
+  constructor() {
   }
 
   current_move = 0;
@@ -49,7 +50,7 @@ export class BoardComponent implements OnInit {
       'Bb6 14.Nbd2 Bb7 15.Ne4 Qf5 16.Bxd3 Qh5 17.Nf6+ gxf6 18.exf6',
       'Rg8 19.Rad1 Qxf3 20.Rxe7+ Nxe7 21.Qxd7+ Kxd7 22.Bf5+ Ke8',
       '23.Bd7+ Kf8 24.Bxe7# 1-0'
-  ]
+    ]
 
     this.chess.loadPgn(pgn.join('\n'));
     this.updateBoard(this.chess2);
@@ -57,7 +58,7 @@ export class BoardComponent implements OnInit {
 
   movePiece(): void {
     if (!this.chess2.isGameOver()) {
-      let history = this.chess.history({verbose: true});
+      let history = this.chess.history({ verbose: true });
       this.chess2.move(history[this.current_move]);
       this.updateBoard(this.chess2);
 
@@ -76,17 +77,14 @@ export class BoardComponent implements OnInit {
           let type = board[i][j]?.type;
           let piece = type + "_" + board[i][j]!.color;
           this.board[i][j] = "assets/" + piece + ".png";
-          
         } else {
           this.board[i][j] = "assets/Empty.png";
         }
       }
     }
-    console.log(board);
   }
 
   loadPgn(data: string): void {
-    console.log(data);
     this.current_move = 0;
     this.chess.loadPgn(data);
     this.updateBoard(this.chess2);

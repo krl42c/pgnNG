@@ -1,4 +1,3 @@
-
 export class MoveParser {
     constructor() {
 
@@ -6,7 +5,8 @@ export class MoveParser {
     static getPiecePng(move: string, color: string): string {
         // Rook 
         let extension = ".png";
-        if (move.length == 2) {
+        let start = move.charAt(0);
+        if (start === start.toLowerCase()) {
             return "p" + "_" + color + extension;
         }
         if (move.startsWith("O")) {
@@ -15,13 +15,5 @@ export class MoveParser {
 
         let piece = move.charAt(0)!.toLowerCase() + "_" + color + extension;
         return piece;
-    }
-}
-
-
-export namespace MoveParser {
-    enum PieceColor {
-        WHITE = "w",
-        BLACK = "b"
     }
 }

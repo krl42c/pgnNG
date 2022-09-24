@@ -9,6 +9,5 @@
 .chess-board .light { background: #eee; }
 .chess-board .dark { background: #aaa; }
 .step {
-    margin-top: 5%;
-    margin-left: 2%;
+    margin-left: 35%;
 }
