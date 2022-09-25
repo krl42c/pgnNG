@@ -2,7 +2,6 @@
 <textarea #pgnInput class="form-control w-96" id="exampleFormControlTextarea1" rows="3"></textarea>
 <button (click)="loadPgn(pgnInput.value)" class="btn btn-secondary">Load</button>
 <div>
-
     <table class="chess-board mt-5">
         <tbody>
             <tr>
@@ -110,8 +109,11 @@
 
     <button class="h-10 px-6 font-semibold rounded-md bg-black text-white ml-4 mt-4"
         (click)="movePiece()">FORWARD</button>
-    <button class="h-10 px-6 font-semibold rounded-md bg-black text-white ml-4 mt-4" (click)="moveBackwards()">BACK</button>
+    <button class="h-10 px-6 font-semibold rounded-md bg-black text-white ml-4 mt-4"
+        (click)="moveBackwards()">BACK</button>
 
 </div>
 <app-tracker></app-tracker>
-<app-dataloader (item_event)="loadPgn($event)"></app-dataloader>
+<div>
+    <app-dataloader (item_event)="loadPgn($event)"></app-dataloader>
+</div>
