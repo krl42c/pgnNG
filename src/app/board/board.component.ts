@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit  } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Chess } from 'chess.js';
 
@@ -7,6 +7,7 @@ import { Chess } from 'chess.js';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
+
 export class BoardComponent implements OnInit {
   // TODO: King and Queen are flipped 
   board: Array<Array<String>> = [
@@ -24,11 +25,11 @@ export class BoardComponent implements OnInit {
   chess2: Chess = new Chess;
   moves: Array<String> = [];
 
-
   constructor() {
   }
 
   current_move = 0;
+
 
   ngOnInit(): void {
     const pgn = [
@@ -91,6 +92,9 @@ export class BoardComponent implements OnInit {
   }
 
   loadPgn(data: string): void {
+    console.log(data);
+    console.log("PGN Loaded from file");
+    this.chess2.reset();
     this.current_move = 0;
     this.chess.loadPgn(data);
     this.updateBoard(this.chess2);
