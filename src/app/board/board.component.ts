@@ -61,10 +61,16 @@ export class BoardComponent implements OnInit {
       let history = this.chess.history({ verbose: true });
       this.chess2.move(history[this.current_move]);
       this.updateBoard(this.chess2);
-
-      console.log(history);
       this.moves.push(this.chess2.fen());
       this.current_move++;
+    }
+  }
+
+  moveBackwards(): void {
+    if(this.current_move > 0)  {
+      this.current_move--;
+      this.chess2.undo();
+      this.updateBoard(this.chess2);
     }
   }
 

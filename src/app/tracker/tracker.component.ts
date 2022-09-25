@@ -14,8 +14,6 @@ export class TrackerComponent implements OnInit {
 
   constructor(board: BoardComponent) { 
     this.board = board;
-    console.log("Tracker:");
-    console.log(board);
   }
 
   ngOnInit(): void {
@@ -23,7 +21,6 @@ export class TrackerComponent implements OnInit {
 
   getParse(move : string, color : string): string {
     let str =  MoveParser.getPiecePng(move, color);
-    console.log(str);
     return str;
   }
 
