@@ -21,9 +21,12 @@ export class BoardComponent implements OnInit {
     ["r_w", "n_w", "b_w", "q_w", "k_w", "b_w", "n_w", "r_w"]
   ];
 
-  chess: Chess = new Chess;
-  chess2: Chess = new Chess;
+  data_board: Chess = new Chess;
+  display_board: Chess = new Chess;
+
   moves: Array<String> = [];
+
+  game! : Game;
 
   constructor() {
   }
@@ -53,16 +56,16 @@ export class BoardComponent implements OnInit {
       '23.Bd7+ Kf8 24.Bxe7# 1-0'
     ]
 
-    this.chess.loadPgn(pgn.join('\n'));
-    this.updateBoard(this.chess2);
+    this.data_board.loadPgn(pgn.join('\n'));
+    this.updateBoard(this.display_board);
   }
 
   movePiece(): void {
-    if (!this.chess2.isGameOver()) {
-      let history = this.chess.history({ verbose: true });
-      this.chess2.move(history[this.current_move]);
-      this.updateBoard(this.chess2);
-      this.moves.push(this.chess2.fen());
+    if (!this.display_board.isGameOver()) {
+      let history = this.data_board.history({ verbose: true });
+      this.display_board.move(history[this.current_move]);
+      this.updateBoard(this.display_board);
+      this.moves.push(this.display_board.fen());
       this.current_move++;
     }
   }
@@ -70,8 +73,8 @@ export class BoardComponent implements OnInit {
   moveBackwards(): void {
     if(this.current_move > 0)  {
       this.current_move--;
-      this.chess2.undo();
-      this.updateBoard(this.chess2);
+      this.display_board.undo();
+      this.updateBoard(this.display_board);
     }
   }
 
@@ -94,9 +97,23 @@ export class BoardComponent implements OnInit {
   loadPgn(data: string): void {
     console.log(data);
     console.log("PGN Loaded from file");
-    this.chess2.reset();
+    this.display_board.reset();
     this.current_move = 0;
-    this.chess.loadPgn(data);
-    this.updateBoard(this.chess2);
+    this.data_board.loadPgn(data);
+    console.log(this.data_board.header());
+    this.updateBoard(this.display_board);
+  }
+}
+
+class Game {
+  event : String;
+  
+  white_player : String;
+  black_player : String;
+
+  constructor(event : String, white_player : String, black_player : String) {
+    this.event = event;
+    this.white_player = white_player;
+    this.black_player = black_player;
   }
 }

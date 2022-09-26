@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BoardComponent } from '../board/board.component';
-import { Chess } from 'chess.js';
-import { HttpClient } from '@angular/common/http';
+
 import { Output, EventEmitter } from '@angular/core';
 
 
@@ -38,5 +36,4 @@ export class DataloaderComponent implements OnInit {
     }
     reader.readAsText(file);
   }
-
 }

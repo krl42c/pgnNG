@@ -1,7 +1,7 @@
 <div class="tracker">
     <table class="table table-striped">
         <tbody>
-            <tr *ngFor="let item of this.board.chess2.history()">
+            <tr *ngFor="let item of this.board.display_board.history()">
                 <td> {{item}}<img src='assets/{{getParse(item.toString(), "w")}}'> </td>
             </tr>
         </tbody>
