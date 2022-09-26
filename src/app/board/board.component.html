@@ -1,8 +1,15 @@
+<!-- 
 <label for="exampleFormControlTextarea1">Load pgn from text: </label>
 <textarea #pgnInput class="form-control w-96" id="exampleFormControlTextarea1" rows="3"></textarea>
 <button (click)="loadPgn(pgnInput.value)" class="btn btn-secondary">Load</button>
+-->
 <div>
     <table class="chess-board mt-5">
+        <thead>
+            {{game.event}} <br>
+            {{game.white_player}} <br>
+            {{game.black_player}}
+        </thead>
         <tbody>
             <tr>
                 <th></th>

@@ -95,12 +95,14 @@ export class BoardComponent implements OnInit {
   }
 
   loadPgn(data: string): void {
-    console.log(data);
-    console.log("PGN Loaded from file");
     this.display_board.reset();
     this.current_move = 0;
     this.data_board.loadPgn(data);
-    console.log(this.data_board.header());
+
+    let headers = Object.create(this.data_board.header());
+    this.game = new Game(headers.Event, headers.White, headers.Black);
+
+    console.log(headers.Event);
     this.updateBoard(this.display_board);
   }
 }
@@ -110,7 +112,6 @@ class Game {
   
   white_player : String;
   black_player : String;
-
   constructor(event : String, white_player : String, black_player : String) {
     this.event = event;
     this.white_player = white_player;
