@@ -120,7 +120,7 @@
         (click)="moveBackwards()">BACK</button>
 
 </div>
-<app-tracker></app-tracker>
+    <app-tracker [board]="display_board"></app-tracker>
 <div>
     <app-dataloader (item_event)="loadPgn($event)"></app-dataloader>
 </div>

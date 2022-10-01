@@ -1,6 +1,7 @@
 import { Component, ComponentFactoryResolver, OnInit  } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Chess } from 'chess.js';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -33,6 +34,7 @@ export class BoardComponent implements OnInit {
 
   current_move = 0;
 
+  @Output() item_event = new EventEmitter<String>();
 
   ngOnInit(): void {
     const pgn = [

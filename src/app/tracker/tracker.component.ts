@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Move } from 'chess.js';
+import { Component, Input, OnInit } from '@angular/core';
+import { Chess, Move } from 'chess.js';
 import { BoardComponent } from '../board/board.component';
 import { MoveParser } from './move_parser';
 
@@ -9,11 +9,9 @@ import { MoveParser } from './move_parser';
   styleUrls: ['./tracker.component.css']
 })
 export class TrackerComponent implements OnInit {
-
-  board: BoardComponent;
-
-  constructor(board: BoardComponent) { 
-    this.board = board;
+  @Input() board = new Chess();
+  
+  constructor() { 
   }
 
   ngOnInit(): void {
