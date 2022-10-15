@@ -9,20 +9,37 @@ import { MoveParser } from './move_parser';
   styleUrls: ['./tracker.component.css']
 })
 export class TrackerComponent implements OnInit {
+
   @Input() board = new Chess();
-  
-  constructor() { 
+
+  data = new Array<Data>();
+  turn = 0;
+
+  constructor() {
   }
 
   ngOnInit(): void {
+   
   }
 
-  getParse(move : string, color : string): string {
-    let str =  MoveParser.getPiecePng(move, color);
+  getParse(move: string, index: number ): string {
+    let color = "w";
+    console.log(this.board.history().pop());
+    this.data.push(new Data(this.board.history().pop()!.toString(), this.board.turn()));
+    if(index % 2 != 0)
+      color = "b"
+    let str = MoveParser.getPiecePng(move, color);
+    this.turn += 1;
     return str;
   }
+}
 
-  loadAtMove() : void {
-    
+class Data {
+  move! : string;
+  color! : string;
+
+  constructor(move : string, color : string) {
+    this.move = move;
+    this.color = color;
   }
 }
